@@ -55,7 +55,7 @@
 
     /* HERO */
     .hero{
-      padding:48px 0 12px; /* reduced bottom padding so next section peeks */
+      padding:48px 0 12px;
       text-align:center;
       position:relative;
     }
@@ -81,16 +81,78 @@
       text-transform:uppercase;
       font-size:12px;
     }
-.hero-sub {
-  font-size: 20px;
-  line-height: 1.5;
-  max-width: 780px;      /* matches new relaxed layout */
-  margin: 10px auto 24px auto;
-  color: #eee;
-}
+    .hero-sub{
+      font-size:20px;
+      line-height:1.5;
+      max-width:780px;
+      margin:10px auto 24px auto;
+      color:#eee;
+    }
 
+    /* CTA Row (FIXED) */
+    .cta-row{
+      display:flex;
+      justify-content:center;
+      align-items:center;    /* PERFECT FIX */
+      gap:14px;
+      flex-wrap:wrap;
+    }
 
-    /* SCROLL CTA */
+    .cta{
+      background:var(--cta-primary);
+      color:#000;
+      border:none;
+      border-radius:100px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:0.06em;
+      cursor:pointer;
+      transition:0.2s;
+
+      height:46px;      
+      padding:0 24px;
+      font-size:15.5px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      box-shadow:0 10px 30px rgba(255,217,0,0.28);
+    }
+
+    @media (max-width:920px){
+      .cta{
+        height:44px;
+        padding:0 20px;
+        font-size:14px;
+      }
+    }
+
+    .cta:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 36px rgba(255,217,0,0.35);
+    }
+
+    /* FIXED BADGE ALIGNMENT */
+    .badge-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .store-badge{
+      width:150px;
+      height:auto;     /* NO SHRINKING */
+      display:block;
+    }
+
+    .hero-footnote{
+      margin-top:12px;
+      font-size:13px;
+      color:var(--text-subtle);
+    }
+
+    /* SCROLL INDICATOR */
     .microcta{
       margin-top:10px;
       font-size:14px;
@@ -101,43 +163,6 @@
     }
     .microcta:hover{ opacity:1; }
 
-    /* CTA Row */
-    .cta-row{
-      display:flex;
-      justify-content:center;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-    .cta{
-      background:var(--cta-primary);
-      color:#000;
-      border:none;
-      padding:14px 22px;
-      border-radius:100px;
-      font-weight:700;
-      text-transform:uppercase;
-      font-size:12px;
-      box-shadow:0 10px 30px rgba(255,217,0,0.28);
-      cursor:pointer;
-      letter-spacing:0.06em;
-      transition:0.2s;
-    }
-    .cta:hover{
-      transform:translateY(-2px);
-      box-shadow:0 12px 36px rgba(255,217,0,0.35);
-    }
-    .store-badge{
-      width:150px;
-      height:auto;
-    }
-
-    .hero-footnote{
-      margin-top:12px;
-      font-size:13px;
-      color:var(--text-subtle);
-    }
-
-    /* SCROLL INDICATOR */
     .scroll-indicator{
       margin-top:16px;
       display:flex;
@@ -155,7 +180,6 @@
       50%{ transform:translateY(6px); }
     }
 
-    /* HERO DIVIDER */
     .hero-divider{
       width:100%;
       height:1px;
@@ -172,22 +196,24 @@
       font-size:28px;
       margin-bottom:12px;
     }
-.section-intro {
-  margin: 0 auto 22px auto;
-  max-width: 780px;      /* wider but still readable */
-  color: var(--muted);
-  font-size: 17px;
-  line-height: 1.55;
-  letter-spacing: 0.2px;
-  text-align: center;
-}
-
+    .section-intro{
+      margin:0 auto 22px auto;
+      max-width:780px;
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.55;
+      letter-spacing:0.2px;
+      text-align:center;
+    }
 
     /* HOW IT WORKS */
     .grid{
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
       gap:20px;
+    }
+    @media(max-width:920px){
+      .grid{ grid-template-columns:1fr; }
     }
     .card{
       background:var(--panel);
@@ -225,35 +251,29 @@
       line-height:1.6;
       letter-spacing:0.2px;
     }
-    @media (max-width:920px){
-      .grid{ grid-template-columns:1fr; }
-    }
 
     /* MOCKUPS */
-.mock-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 18px;
-  margin-top: 10px;
-}
-
-.glass {
-  background: var(--glass);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 18px;
-  padding: 12px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 14px 34px rgba(0,0,0,0.45);
-}
-
-.mock {
-  width: 260px; 
-  border-radius: 14px;
-  display: block;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.50);
-}
-
+    .mock-row{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:18px;
+      margin-top:10px;
+    }
+    .glass{
+      background:var(--glass);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:18px;
+      padding:12px;
+      backdrop-filter:blur(6px);
+      box-shadow:0 14px 34px rgba(0,0,0,0.45);
+    }
+    .mock{
+      width:260px;
+      border-radius:14px;
+      display:block;
+      box-shadow:0 12px 30px rgba(0,0,0,0.50);
+    }
 
     /* BENEFITS */
     .benefits{
@@ -300,23 +320,23 @@
       color:var(--text-subtle);
       font-size:14px;
     }
+
   </style>
 
-  <!-- GOOGLE ADS (preserved EXACTLY) -->
+  <!-- GOOGLE ADS (unchanged) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1002428051"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'AW-1002428051');
-
-    function gtag_report_conversion(url) {
-      var callback = function () { if(url){ window.location = url; } };
-      gtag('event', 'conversion', {
-        'send_to': 'AW-1002428051/pa5rCJO44bYbEJOt_90D',
-        'value': 1.0,
-        'currency': 'CAD',
-        'event_callback': callback
+    function gtag_report_conversion(url){
+      var callback=function(){ if(url){ window.location=url; } };
+      gtag('event','conversion',{
+        'send_to':'AW-1002428051/pa5rCJO44bYbEJOt_90D',
+        'value':1.0,
+        'currency':'CAD',
+        'event_callback':callback
       });
       return false;
     }
@@ -331,9 +351,7 @@
     <div class="wrap hero-center">
 
       <img class="hero-logo" src="assets/Dogtor-Logo.png" alt="Dogtor Logo">
-
       <h1 class="hero-title">dogtor</h1>
-
       <p class="hero-tagline">Your first step before the vet</p>
 
       <p class="hero-sub">
@@ -342,16 +360,18 @@
 
       <!-- CTA -->
       <div class="cta-row">
+
         <button class="cta" onclick="return gtag_report_conversion('https://apps.apple.com/ca/app/dogtor/id6752425855');">
           Download on the App Store
         </button>
 
-        <a href="https://apps.apple.com/ca/app/dogtor/id6752425855" target="_blank">
+        <a class="badge-wrap" href="https://apps.apple.com/ca/app/dogtor/id6752425855" target="_blank">
           <img class="store-badge" src="assets/app-store-badge.png" alt="Download on the App Store">
         </a>
+
       </div>
 
-      <!-- MICRO CTA -->
+      <!-- MINI SCROLL CTA -->
       <div class="microcta" onclick="document.getElementById('howitworks').scrollIntoView({behavior:'smooth'});">
         See how Dogtor works ↓
       </div>
@@ -361,9 +381,7 @@
         <svg viewBox="0 0 24 24"><path d="M12 16l-6-6h12z"/></svg>
       </div>
 
-      <!-- Divider -->
       <div class="hero-divider"></div>
-
     </div>
   </header>
 
@@ -410,36 +428,26 @@
         </div>
       </section>
 
+      <!-- MOCKUPS -->
+      <section id="see-it-in-action">
+        <h2>See it in action</h2>
+        <p class="section-intro">
+          Visual reports, plain-language explanations, and easy-to-skim summaries help you feel prepared before walking into the clinic.
+        </p>
 
-<!-- MOCKUPS -->
-<section id="see-it-in-action">
-  <h2>See it in action</h2>
-  <p class="section-intro">
-    Visual reports, plain-language explanations, and easy-to-skim summaries help you feel prepared before walking into the clinic.
-  </p>
-
-  <div class="mock-row">
-    <div class="glass">
-      <img class="mock" src="assets/Dogtor-Mockup1.jpeg" alt="Dogtor mockup 1">
-    </div>
-
-    <div class="glass">
-      <img class="mock" src="assets/Dogtor-Mockup2.jpeg" alt="Dogtor mockup 2">
-    </div>
-
-    <div class="glass">
-      <img class="mock" src="assets/Dogtor-Mockup3.jpeg" alt="Dogtor mockup 3">
-    </div>
-  </div>
-</section>
-
-
+        <div class="mock-row">
+          <div class="glass"><img class="mock" src="assets/Dogtor-Mockup1.jpeg" alt=""></div>
+          <div class="glass"><img class="mock" src="assets/Dogtor-Mockup2.jpeg" alt=""></div>
+          <div class="glass"><img class="mock" src="assets/Dogtor-Mockup3.jpeg" alt=""></div>
+        </div>
+      </section>
 
       <!-- BENEFITS -->
       <section>
         <h2>Why Dogtor?</h2>
         <p class="section-intro">
-          Built in Oakville for Canadian pet parents who want peace of mind, not panic, <br> when something looks “off.”
+          Built in Oakville for Canadian pet parents who want peace of mind, not panic,<br>
+          when something looks “off.”
         </p>
 
         <div class="benefits">
@@ -447,12 +455,10 @@
             <h3>Save money</h3>
             <p>Avoid unnecessary vet visits by understanding sooner what might be going on.</p>
           </div>
-
           <div class="benefit">
             <h3>Clarity fast</h3>
             <p>Know what’s normal (and what’s not) in minutes, not hours of Googling.</p>
           </div>
-
           <div class="benefit">
             <h3>Built for Canada</h3>
             <p>Made in Oakville with privacy-first design and friendly local support.</p>
@@ -460,18 +466,19 @@
         </div>
       </section>
 
-
       <!-- SECONDARY CTA -->
       <section class="cta-section">
-        <div class="cta-inline">
-          <button class="cta" onclick="return gtag_report_conversion('https://apps.apple.com/ca/app/dogtor/id6752425855');">
-            Download Free on the App Store
-          </button>
+         <div class="cta-row">
 
-          <a href="https://apps.apple.com/ca/app/dogtor/id6752425855" target="_blank">
-            <img class="store-badge" src="assets/app-store-badge.png" alt="">
-          </a>
-        </div>
+        <button class="cta" onclick="return gtag_report_conversion('https://apps.apple.com/ca/app/dogtor/id6752425855');">
+          Download on the App Store
+        </button>
+
+        <a class="badge-wrap" href="https://apps.apple.com/ca/app/dogtor/id6752425855" target="_blank">
+          <img class="store-badge" src="assets/app-store-badge.png" alt="Download on the App Store">
+        </a>
+
+      </div>
       </section>
 
       <footer>
