@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dogtor – AI Pet Health Companion | Your First Step Before the Vet</title>
+
+  <meta name="description" content="Dogtor is your AI-powered pet health companion. Snap a photo of your dog's symptoms to get instant insights and peace of mind before visiting the vet." />
+  <meta property="og:title" content="Dogtor – AI Pet Health Companion" />
+  <meta property="og:description" content="Snap a photo. Get instant AI insights before the vet. Your first step before the vet." />
+  <meta property="og:image" content="assets/Dogtor-Mockup1.png" />
+  <meta property="og:type" content="website" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg:#0C0C0D;
+      --panel:#141516;
+      --panel-raised:#1E1F21;
+      --panel-hover:#242628;
+      --text:#ffffff;
+      --text-soft:#d6d6d6;
+      --text-subtle:#b8b8b8;
+      --coral:#FF5A5F;
+      --cta-primary:#FFD900;
+      --teal-accent:rgba(44,197,197,0.18);
+      --glass:rgba(255,255,255,0.08);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{
+      margin:0;
+      background:
+        radial-gradient(900px 500px at 70% -10%, rgba(255,90,95,0.20), transparent),
+        radial-gradient(900px 500px at 10% 110%, rgba(44,197,197,0.15), transparent),
+        var(--bg);
+      color:var(--text);
+      font-family:'Inter',sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    .wrap{
+      max-width:1080px;
+      margin:0 auto;
+      padding:16px 24px;
+    }
+    @media (min-width:1200px){
+      body{ padding:0 40px; }
+      .wrap{
+        max-width:1000px;
+        padding:20px 32px;
+      }
+    }
+
+    /* HERO */
+    .hero{
+      padding:48px 0 12px; /* reduced bottom padding so next section peeks */
+      text-align:center;
+      position:relative;
+    }
+    .hero-center{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:12px;
+    }
+
+    .hero-logo{ width:90px; height:90px; }
+    .hero-title{
+      font-family:'Poppins',sans-serif;
+      font-weight:700;
+      font-size:56px;
+      margin:10px 0 0;
+      color:var(--coral);
+    }
+    .hero-tagline{
+      margin:0;
+      color:var(--text-subtle);
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      font-size:12px;
+    }
+    .hero-sub{
+      font-size:22px;
+      color:var(--text-soft);
+      line-height:1.6;
+      letter-spacing:0.3px;
+      margin:14px 0 24px;
+      max-width:560px;
+    }
+
+    /* SCROLL CTA */
+    .microcta{
+      margin-top:10px;
+      font-size:14px;
+      color:var(--text-soft);
+      cursor:pointer;
+      opacity:0.85;
+      transition:0.2s;
+    }
+    .microcta:hover{ opacity:1; }
+
+    /* CTA Row */
+    .cta-row{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .cta{
+      background:var(--cta-primary);
+      color:#000;
+      border:none;
+      padding:14px 22px;
+      border-radius:100px;
+      font-weight:700;
+      text-transform:uppercase;
+      font-size:12px;
+      box-shadow:0 10px 30px rgba(255,217,0,0.28);
+      cursor:pointer;
+      letter-spacing:0.06em;
+      transition:0.2s;
+    }
+    .cta:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 36px rgba(255,217,0,0.35);
+    }
+    .store-badge{
+      width:150px;
+      height:auto;
+    }
+
+    .hero-footnote{
+      margin-top:12px;
+      font-size:13px;
+      color:var(--text-subtle);
+    }
+
+    /* SCROLL INDICATOR */
+    .scroll-indicator{
+      margin-top:16px;
+      display:flex;
+      justify-content:center;
+      animation:bounce 1.8s infinite ease-in-out;
+      opacity:0.65;
+    }
+    .scroll-indicator svg{
+      width:20px;
+      height:20px;
+      fill:var(--text-soft);
+    }
+    @keyframes bounce{
+      0%,100%{ transform:translateY(0); }
+      50%{ transform:translateY(6px); }
+    }
+
+    /* HERO DIVIDER */
+    .hero-divider{
+      width:100%;
+      height:1px;
+      margin-top:28px;
+      background:var(--teal-accent);
+      opacity:0.7;
+    }
+
+    /* SECTIONS */
+    main{ padding-bottom:32px; }
+    section{ padding:28px 0; }
+    h2{
+      font-family:'Poppins',sans-serif;
+      font-size:28px;
+      margin-bottom:12px;
+    }
+    .section-intro{
+      color:var(--text-soft);
+      font-size:16px;
+      line-height:1.65;
+      letter-spacing:0.2px;
+      font-weight:500;
+      margin-bottom:18px;
+      max-width:520px;
+    }
+
+    /* HOW IT WORKS */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:20px;
+    }
+    .card{
+      background:var(--panel);
+      border:1px solid rgba(255,255,255,0.05);
+      border-radius:18px;
+      padding:20px;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,0.04),
+                 0 10px 30px rgba(0,0,0,0.5);
+      transition:0.2s;
+    }
+    .card:hover{
+      background:var(--panel-hover);
+      transform:translateY(-2px);
+    }
+    .step{
+      display:flex;
+      gap:12px;
+    }
+    .dot{
+      width:32px;
+      height:32px;
+      border-radius:999px;
+      background:rgba(255,90,95,0.25);
+      color:var(--coral);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-weight:700;
+      flex-shrink:0;
+    }
+    .card p{
+      margin:6px 0 0;
+      color:var(--text-soft);
+      font-size:16px;
+      line-height:1.6;
+      letter-spacing:0.2px;
+    }
+    @media (max-width:920px){
+      .grid{ grid-template-columns:1fr; }
+    }
+
+    /* MOCKUPS */
+.mock-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.glass {
+  background: var(--glass);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 12px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.45);
+}
+
+.mock {
+  width: 260px; 
+  border-radius: 14px;
+  display: block;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.50);
+}
+
+
+    /* BENEFITS */
+    .benefits{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:20px;
+    }
+    .benefit{
+      background:var(--panel-raised);
+      border-radius:18px;
+      padding:18px;
+      border:1px solid rgba(255,255,255,0.05);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.06),
+        0 6px 25px rgba(0,0,0,0.45);
+    }
+    .benefit h3{
+      margin:0 0 6px;
+      font-size:18px;
+      color:var(--coral);
+    }
+    .benefit p{
+      margin:0;
+      color:var(--text-soft);
+      font-size:16px;
+      line-height:1.6;
+    }
+
+    /* SECONDARY CTA */
+    .cta-section{
+      text-align:center;
+      padding:32px 0 28px;
+    }
+    .cta-inline{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    footer{
+      padding:20px 0 40px;
+      text-align:center;
+      color:var(--text-subtle);
+      font-size:14px;
+    }
+  </style>
+
+  <!-- GOOGLE ADS (preserved EXACTLY) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1002428051"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-1002428051');
+
+    function gtag_report_conversion(url) {
+      var callback = function () { if(url){ window.location = url; } };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-1002428051/pa5rCJO44bYbEJOt_90D',
+        'value': 1.0,
+        'currency': 'CAD',
+        'event_callback': callback
+      });
+      return false;
+    }
+  </script>
+
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap hero-center">
+
+      <img class="hero-logo" src="assets/Dogtor-Logo.png" alt="Dogtor Logo">
+
+      <h1 class="hero-title">dogtor</h1>
+
+      <p class="hero-tagline">Your first step before the vet</p>
+
+      <p class="hero-sub">
+        Snap a photo. Get AI insights before your next vet visit.
+      </p>
+
+      <!-- CTA -->
+      <div class="cta-row">
+        <button class="cta" onclick="return gtag_report_conversion('https://apps.apple.com/ca/app/dogtor/id6752425855');">
+          Download on the App Store
+        </button>
+
+        <a href="https://apps.apple.com/ca/app/dogtor/id6752425855" target="_blank">
+          <img class="store-badge" src="assets/app-store-badge.png" alt="Download on the App Store">
+        </a>
+      </div>
+
+      <!-- MICRO CTA -->
+      <div class="microcta" onclick="document.getElementById('howitworks').scrollIntoView({behavior:'smooth'});">
+        See how Dogtor works ↓
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-indicator">
+        <svg viewBox="0 0 24 24"><path d="M12 16l-6-6h12z"/></svg>
+      </div>
+
+      <!-- Divider -->
+      <div class="hero-divider"></div>
+
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+
+      <!-- HOW IT WORKS -->
+      <section id="howitworks">
+        <h2>How it works</h2>
+        <p class="section-intro">
+          Dogtor turns a quick photo and a few details into clear, vet-ready guidance — in minutes.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="step">
+              <span class="dot">1</span>
+              <div>
+                <strong>Snap</strong>
+                <p>Take a photo or describe your dog's symptoms in a few words.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="step">
+              <span class="dot">2</span>
+              <div>
+                <strong>Analyze</strong>
+                <p>Dogtor’s AI looks for patterns and flags what might need attention.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="step">
+              <span class="dot">3</span>
+              <div>
+                <strong>Understand</strong>
+                <p>Get clear next steps so you know if it’s “watch at home” or “go now.”</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+<!-- MOCKUPS -->
+<section id="see-it-in-action">
+  <h2>See it in action</h2>
+  <p class="section-intro">
+    Visual reports, plain-language explanations, and easy-to-skim summaries help you feel prepared before walking into the clinic.
+  </p>
+
+  <div class="mock-row">
+    <div class="glass">
+      <img class="mock" src="assets/Dogtor-Mockup1.jpeg" alt="Dogtor mockup 1">
+    </div>
+
+    <div class="glass">
+      <img class="mock" src="assets/Dogtor-Mockup2.jpeg" alt="Dogtor mockup 2">
+    </div>
+
+    <div class="glass">
+      <img class="mock" src="assets/Dogtor-Mockup3.jpeg" alt="Dogtor mockup 3">
+    </div>
+  </div>
+</section>
+
+
+
+      <!-- BENEFITS -->
+      <section>
+        <h2>Why Dogtor?</h2>
+        <p class="section-intro">
+          Built in Oakville for Canadian pet parents who want peace of mind, not panic, when something looks “off.”
+        </p>
+
+        <div class="benefits">
+          <div class="benefit">
+            <h3>Save money</h3>
+            <p>Avoid unnecessary vet visits by understanding sooner what might be going on.</p>
+          </div>
+
+          <div class="benefit">
+            <h3>Clarity fast</h3>
+            <p>Know what’s normal (and what’s not) in minutes, not hours of Googling.</p>
+          </div>
+
+          <div class="benefit">
+            <h3>Built for Canada</h3>
+            <p>Made in Oakville with privacy-first design and friendly local support.</p>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- SECONDARY CTA -->
+      <section class="cta-section">
+        <div class="cta-inline">
+          <button class="cta" onclick="return gtag_report_conversion('https://apps.apple.com/ca/app/dogtor/id6752425855');">
+            Download Free on the App Store
+          </button>
+
+          <a href="https://apps.apple.com/ca/app/dogtor/id6752425855" target="_blank">
+            <img class="store-badge" src="assets/app-store-badge.png" alt="">
+          </a>
+        </div>
+      </section>
+
+      <footer>
+        © 2025 Dogtor Inc. · support@hellodogtor.com
+      </footer>
+
+    </div>
+  </main>
+
+</body>
+</html>
